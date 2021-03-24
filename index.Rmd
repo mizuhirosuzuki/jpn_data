@@ -12,7 +12,8 @@ output:
 - [その他](other.html)
 
 
-データの情報提供をしていただける方は[こちらのフォーム](https://docs.google.com/forms/d/e/1FAIpQLScoBlO5OZa0Q5Cd23O5zMoKwOVxhN6F65Mn2HQVWSlVaHDqXg/viewform?usp=sf_link)にデータの情報をご入力ください。
+<!-- データの情報提供をしていただける方は[こちらのフォーム](https://docs.google.com/forms/d/e/1FAIpQLScoBlO5OZa0Q5Cd23O5zMoKwOVxhN6F65Mn2HQVWSlVaHDqXg/viewform?usp=sf_link)にデータの情報をご入力ください。 -->
+データの情報提供をしていただける方はこちらのフォーム（ここにGoogle Formへのリンクが入る）にデータの情報をご入力ください。
 
 管理者: [鈴木 瑞洋](https://github.com/mizuhirosuzuki)
 
