@@ -1,0 +1,11 @@
+---
+title: "日本のデータ"
+output: 
+  html_document:
+    toc_collapsed: true
+    toc_depth: 2
+---
+
+
+
+
