@@ -70,6 +70,17 @@ for (i in seq(nrow(data_show))) {
   cat("データ利用の申請: ", data_publicity, "\n\n ")
   cat("\n")
   
+  j <- 0
+  for (example in c(data_example1, data_example2, data_example3)) {
+    example <- ifelse(is.na(example), "", example)
+    if (str_trim(example) != "") {
+      j <- j + 1
+        cat("### 研究・分析例  その", j, "\n")
+        cat("\n")
+        cat(example, "\n")
+        cat("\n")
+    }
+  }
   
 }
 
