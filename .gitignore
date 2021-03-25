@@ -94,3 +94,4 @@ passwords/
 .Rproj.user
 
 !/docs/**/*
+!/**/*.csv
