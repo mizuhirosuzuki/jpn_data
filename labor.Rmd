@@ -15,14 +15,13 @@ packages <- c(
 )
 
 pacman::p_load(packages, character.only = TRUE)
+
+source("./main_part.R")
 ```
-
-
-
 
 ```{r, echo = FALSE, message= FALSE, results = "hide"}
 
-data_list <- read_csv("jpn_data (Responses) - Form Responses 1.csv")
+data_list <- read_csv("jpn_data_confirmed.csv")
 
 data_show <- data_list %>% 
   filter(str_detect(`関連する分野 （複数選択可）`, "労働"))
@@ -31,63 +30,8 @@ data_show <- data_list %>%
 
 ```{r, echo = FALSE, results = "asis"}
 
-for (i in seq(nrow(data_show))) {
-  
-  data_i <- data_show %>% slice(i)
-  
-  data_name <- data_i$データ名
-  data_url <- data_i$URL
-  data_org <- data_i$`データを管理・提供している団体・個人`
-  
-  data_publicity <- data_i$データ利用の申請
-  
-  data_area <- data_i$`関連する分野 （複数選択可）`
-  data_area_split <- str_split(data_area, ",", simplify = TRUE) %>% as.vector()
-  
-  for (i in seq_along(data_area_split)) {
-    area <- str_trim(data_area_split[i])
-    if (area == "農業") {
-      data_area_split[i] <- paste0("[", area, "](agriculture.html)")
-    } else if (area == "労働") {
-      data_area_split[i] <- paste0("[", area, "](labor.html)")
-    } else if (area == "保健・健康") {
-      data_area_split[i] <- paste0("[", area, "](health.html)")
-    } else if (area == "その他") {
-      data_area_split[i] <- paste0("[", area, "](other.html)")
-    }
-  }
-  
-  paste(data_area_split, collapse = ", ")
-  
-  data_example1 <- data_i$`当該データを用いた研究・分析例 （1）`
-  data_example2 <- data_i$`当該データを用いた研究・分析例 （2）`
-  data_example3 <- data_i$`当該データを用いた研究・分析例 （3）`
-  
-  cat("# ", data_name, "\n")
-  cat("関連分野: ", paste(data_area_split, collapse = ", "), "\n")
-  cat("\n")
-  cat("URL: ", data_url, "\n")
-  cat("\n")
-  cat("データを管理・提供している団体・個人: ", data_org, "\n\n ")
-  cat("\n")
-  cat("データ利用の申請: ", data_publicity, "\n\n ")
-  cat("\n")
-  
-  j <- 0
-  for (example in c(data_example1, data_example2, data_example3)) {
-    example <- ifelse(is.na(example), "", example)
-    if (str_trim(example) != "") {
-      j <- j + 1
-        cat("### 研究・分析例  その", j, "\n")
-        cat("\n")
-        cat(example, "\n")
-        cat("\n")
-    }
-  }
-  
-}
+main_part(data_show)
 
 ```
-
 
 

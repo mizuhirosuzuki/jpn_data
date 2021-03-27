@@ -6,14 +6,23 @@ output:
     toc_depth: 2
 ---
 
-- [農業](agriculture.html)
 - [労働](labor.html)
 - [保健・健康](health.html)
+- [農業](agriculture.html)
+- [教育・保育](education.html)
+- [交通・移住](transportation.html)
+- [政治](politics.html)
+- [産業](industry.html)
+- [天候](weather.html)
+- [地理情報](geo.html)
+- [自然言語](nlp.html)
+- [画像データ](image.html)
 - [その他](other.html)
 
 
 <!-- データの情報提供をしていただける方は[こちらのフォーム](https://docs.google.com/forms/d/e/1FAIpQLScoBlO5OZa0Q5Cd23O5zMoKwOVxhN6F65Mn2HQVWSlVaHDqXg/viewform?usp=sf_link)にデータの情報をご入力ください。 -->
 データの情報提供をしていただける方はこちらのフォーム（ここにGoogle Formへのリンクが入る）にデータの情報をご入力ください。
+既存のデータへの加筆・修正点（例: 当該データを使った新たな研究の紹介）やその他問題等ありましたら、[GitHubでIssueを開いて](https://github.com/mizuhirosuzuki/jpn_data/issues)お知らせいただければ幸いです。
 
 管理者: [鈴木 瑞洋](https://github.com/mizuhirosuzuki)
 

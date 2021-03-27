@@ -1,6 +1,0 @@
-Timestamp,データ名,URL,データを管理・提供している団体・個人,データ利用の申請,関連する分野 （複数選択可）,（上の質問で「その他」を選択した場合）どのような分野に関連が深そうか,当該データを用いた研究・分析例 （1）,当該データを用いた研究・分析例 （2）,当該データを用いた研究・分析例 （3）,もしよろしければ情報提供者様のお名前（ご提供いただいたデータの情報と紐付けて公開をすることはいたしませんが、謝辞に加えさせていただきます）
-3/23/2021 21:03:32,Data AAA,https://github.com/mizuhirosuzuki,aaa,必要あり,"労働, 保健・健康, 農業",,XXX,,,
-3/23/2021 21:03:32,Data BBB,https://github.com/mizuhirosuzuki,bbb,必要あり,"農業",,,,,
-3/23/2021 21:03:32,Data CCC,https://github.com/mizuhirosuzuki,ccc,必要なし,"労働",,,,,
-3/23/2021 21:03:32,Data DDD,https://github.com/mizuhirosuzuki,ddd,必要なし,"保健・健康, 農業",,,,,
-3/23/2021 21:03:32,Data EEE,https://github.com/mizuhirosuzuki,eee,必要あり,"農業, その他",,YYY,ZZZ,,

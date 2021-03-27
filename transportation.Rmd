@@ -1,5 +1,5 @@
 ---
-title: "農業"
+title: "交通・移住"
 author: ""
 date: ""
 output:
@@ -24,7 +24,7 @@ source("./main_part.R")
 data_list <- read_csv("jpn_data_confirmed.csv")
 
 data_show <- data_list %>% 
-  filter(str_detect(`関連する分野 （複数選択可）`, "農業"))
+  filter(str_detect(`関連する分野 （複数選択可）`, "交通・移住"))
 
 ```
 
@@ -33,4 +33,5 @@ data_show <- data_list %>%
 main_part(data_show)
 
 ```
+
 
