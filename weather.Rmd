@@ -5,6 +5,8 @@ date: ""
 output:
   html_document:
     md_extensions: -ascii_identifiers
+    toc: true
+    toc_depth: 1
 ---
 
 ```{r setup, include=FALSE}

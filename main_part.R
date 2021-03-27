@@ -54,7 +54,9 @@ main_part <- function(data_show) {
       data_example2 <- data_i$`当該データを用いた研究・分析例 （2）`
       data_example3 <- data_i$`当該データを用いた研究・分析例 （3）`
       
-      cat("# ", data_name, "\n")
+      cat("\n")
+      cat("\n")
+      cat("## ", data_name, "\n")
       cat("関連分野: ", paste(data_area_split, collapse = ", "), "\n")
       cat("\n")
       cat("URL: ", data_url, "\n")
@@ -65,7 +67,7 @@ main_part <- function(data_show) {
       cat("\n")
       
       if (str_trim(data_explanation) != "") {
-        cat("### データ提供もとによるデータの説明 \n")
+        cat("#### データ提供元によるデータの説明 \n")
         cat("\n")
         cat(data_explanation, "\n")
         cat("\n")
@@ -76,7 +78,7 @@ main_part <- function(data_show) {
         example <- ifelse(is.na(example), "", example)
         if (str_trim(example) != "") {
           j <- j + 1
-            cat("### 研究・分析例  その", j, "\n")
+            cat("#### 研究・分析例  その", j, "\n")
             cat("\n")
             cat(example, "\n")
             cat("\n")
@@ -84,7 +86,7 @@ main_part <- function(data_show) {
       }
 
       if (str_trim(data_comments) != "") {
-        cat("### その他コメント \n")
+        cat("#### その他コメント \n")
         cat("\n")
         cat(data_comments, "\n")
         cat("\n")
