@@ -1,3 +1,3 @@
-# jpn_data
+# 日本のデータ
 
-https://mizuhirosuzuki.github.io/jpn_data/
+データサイトは[こちら](https://mizuhirosuzuki.github.io/jpn_data/)です。
