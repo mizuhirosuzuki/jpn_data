@@ -17,7 +17,7 @@ main_part <- function(data_show) {
       data_comments <- ifelse(is.na(data_comments), "", data_comments)
       
       data_area <- data_i$`関連する分野 （複数選択可）`
-      data_area_split <- str_split(data_area, ",", simplify = TRUE) %>% as.vector()
+      data_area_split <- str_split(data_area, ";", simplify = TRUE) %>% as.vector()
       
       for (i in seq_along(data_area_split)) {
         area <- str_trim(data_area_split[i])
