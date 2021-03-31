@@ -14,18 +14,22 @@ output:
 - [政治](politics.html)
 - [産業](industry.html)
 - [天候](weather.html)
+- [マクロ](macro.html)
+- [歴史](history.html)
+- [ネットワーク](network.html)
 - [地理情報](geo.html)
 - [自然言語](nlp.html)
 - [画像データ](image.html)
+- [データ・アーカイブ](archive.html)
 - [その他](other.html)
 
 
-<!-- データの情報提供をしていただける方は[こちらのフォーム](https://docs.google.com/forms/d/e/1FAIpQLScoBlO5OZa0Q5Cd23O5zMoKwOVxhN6F65Mn2HQVWSlVaHDqXg/viewform?usp=sf_link)にデータの情報をご入力ください。 -->
-データの情報提供をしていただける方はこちらのフォーム（ここにGoogle Formへのリンクが入る）にデータの情報をご入力ください。
+データの情報提供をしていただける方は[こちらのフォーム](https://docs.google.com/forms/d/e/1FAIpQLScoBlO5OZa0Q5Cd23O5zMoKwOVxhN6F65Mn2HQVWSlVaHDqXg/viewform?usp=sf_link)にデータの情報をご入力ください。
+<!-- データの情報提供をしていただける方はこちらのフォーム（ここにGoogle Formへのリンクが入る）にデータの情報をご入力ください。 -->
 既存のデータへの加筆・修正点（例: 当該データを使った新たな研究の紹介）やその他問題等ありましたら、[GitHubでIssueを開いて](https://github.com/mizuhirosuzuki/jpn_data/issues)お知らせいただければ幸いです。
 
 管理者: [鈴木 瑞洋](https://github.com/mizuhirosuzuki)
 
-*なんか責任は負いません的な文章*
+*このサイトで紹介されたデータを利用したことによる責任は一切負いません。自己責任での使用をお願い致します。*
 
 

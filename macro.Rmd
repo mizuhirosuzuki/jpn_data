@@ -1,5 +1,5 @@
 ---
-title: "産業・企業"
+title: "マクロ"
 author: ""
 date: ""
 output:
@@ -26,7 +26,7 @@ source("./main_part.R")
 data_list <- read_csv("jpn_data_confirmed.csv")
 
 data_show <- data_list %>% 
-  filter(str_detect(`関連する分野 （複数選択可）`, "産業・企業"))
+  filter(str_detect(`関連する分野 （複数選択可）`, "マクロ"))
 
 ```
 
