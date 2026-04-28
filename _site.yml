@@ -1,0 +1,36 @@
+name: "日本のデータ"
+output:
+  html_document:
+    theme: cosmo
+    #highlight: textmate
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "データ"
+      menu:
+        - text: "労働"
+          href: labor.html
+        - text: "保険・健康"
+          href: health.html
+        - text: "農業"
+          href: agriculture.html
+        - text: "教育・保険"
+          href: education.html
+        - text: "交通・移住"
+          href: transportation.html
+        - text: "政治"
+          href: politics.html
+        - text: "産業"
+          href: industry.html
+        - text: "天候"
+          href: weather.html
+        - text: "地理情報"
+          href: geo.html
+        - text: "自然言語"
+          href: nlp.html
+        - text: "画像データ"
+          href: image.html
+        - text: "その他"
+          href: other.html
+output_dir: "docs"

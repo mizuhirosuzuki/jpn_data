@@ -95,3 +95,6 @@ passwords/
 
 !/docs/**/*
 !/**/*.csv
+!_site.yml
+**/archive_csv/*.csv
+docs/*.csv

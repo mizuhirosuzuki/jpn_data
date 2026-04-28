@@ -14,12 +14,22 @@
 
 <title>交通・移住</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -31,14 +41,9 @@
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -51,32 +56,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -86,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -106,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -167,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -179,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -189,11 +142,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -205,13 +175,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -219,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -272,20 +234,20 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">日本のデータ</a>
+      <a class="navbar-brand" href="index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">ホーム</a>
+  <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     データ
      
     <span class="caret"></span>
@@ -295,13 +257,13 @@ $(document).ready(function () {
       <a href="labor.html">労働</a>
     </li>
     <li>
-      <a href="health.html">保健・健康</a>
+      <a href="health.html">保険・健康</a>
     </li>
     <li>
       <a href="agriculture.html">農業</a>
     </li>
     <li>
-      <a href="education.html">教育・保育</a>
+      <a href="education.html">教育・保険</a>
     </li>
     <li>
       <a href="transportation.html">交通・移住</a>
@@ -329,9 +291,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<li>
-  <a href="https://github.com/mizuhirosuzuki/jpn_data">GitHub</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -340,45 +299,119 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
 <h1 class="title toc-ignore">交通・移住</h1>
+<h4 class="author"></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#日本の通勤圏">日本の通勤圏</a></li>
-<li><a href="#公共調達のデータセット">公共調達のデータセット</a></li>
+<li><a href="#%E6%97%A5%E6%9C%AC%E3%81%AE%E9%80%9A%E5%8B%A4%E5%9C%8F"
+id="toc-日本の通勤圏">日本の通勤圏</a></li>
+<li><a
+href="#%E5%85%AC%E5%85%B1%E8%AA%BF%E9%81%94%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88"
+id="toc-公共調達のデータセット">公共調達のデータセット</a></li>
+<li><a
+href="#%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%E7%B5%B1%E8%A8%88%E6%83%85%E5%A0%B1%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF"
+id="toc-交通事故統計情報のオープンデータ">交通事故統計情報のオープンデータ</a></li>
+<li><a
+href="#%E6%96%B0%E5%9E%8B%E3%82%B3%E3%83%AD%E3%83%8A%E3%82%A6%E3%82%A4%E3%83%AB%E3%82%B9%E6%84%9F%E6%9F%93%E7%97%87%E3%81%AE%E5%BD%B1%E9%9F%BF%E4%B8%8B%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%94%9F%E6%B4%BB%E6%84%8F%E8%AD%98%E8%A1%8C%E5%8B%95%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E8%AA%BF%E6%9F%BB"
+id="toc-新型コロナウイルス感染症の影響下における生活意識行動の変化に関する調査">新型コロナウイルス感染症の影響下における生活意識・行動の変化に関する調査</a></li>
+<li><a
+href="#%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%E7%B5%B1%E8%A8%88%E6%83%85%E5%A0%B1%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF-1"
+id="toc-交通事故統計情報のオープンデータ-1">交通事故統計情報のオープンデータ</a></li>
 </ul>
 </div>
 
 <div id="日本の通勤圏" class="section level2">
 <h2>日本の通勤圏</h2>
-<p>関連分野: <a href="labor.html">労働</a>, <a href="transportation.html">交通・移住</a></p>
-<p>URL: <a href="https://github.com/daisukeadachi/commuting_zone_japan" class="uri">https://github.com/daisukeadachi/commuting_zone_japan</a></p>
-<p>データを管理・提供している団体・個人: 東京大学政策評価研究教育センター</p>
+<p>関連分野: 労働, 交通・移住</p>
+<p>URL: <a href="https://github.com/daisukeadachi/commuting_zone_japan"
+class="uri">https://github.com/daisukeadachi/commuting_zone_japan</a></p>
+<p>データを管理・提供している団体・個人:
+東京大学政策評価研究教育センター</p>
 <p>データ利用の申請: 必要なし</p>
 <div id="データ提供元によるデータの説明" class="section level4">
 <h4>データ提供元によるデータの説明</h4>
-<p>経済分析の地理的単位として通勤圏が注目されています。国勢調査の居住地と職場所在地の情報を用いて日本の通勤圏を作成しました。詳細についてはAdachi, Fukai, Kawaguchi and Saito (2020)をご覧ください。</p>
+<p>経済分析の地理的単位として通勤圏が注目されています。国勢調査の居住地と職場所在地の情報を用いて日本の通勤圏を作成しました。詳細についてはAdachi,
+Fukai, Kawaguchi and Saito (2020)をご覧ください。</p>
 </div>
 <div id="研究分析例-その-1" class="section level4">
 <h4>研究・分析例 その 1</h4>
-<p>ADACHI Daisuke &amp; FUKAI Taiyo &amp; KAWAGUCHI Daiji &amp; SAITO Yukiko, 2020. “Commuting Zones in Japan,” Discussion papers 20021, Research Institute of Economy, Trade and Industry (RIETI).</p>
+<p>ADACHI Daisuke &amp; FUKAI Taiyo &amp; KAWAGUCHI Daiji &amp; SAITO
+Yukiko, 2020. “Commuting Zones in Japan,” Discussion papers 20021,
+Research Institute of Economy, Trade and Industry (RIETI).</p>
 </div>
 </div>
 <div id="公共調達のデータセット" class="section level2">
 <h2>公共調達のデータセット</h2>
-<p>関連分野: <a href="transportation.html">交通・移住</a>, <a href="politics.html">政治</a></p>
-<p>URL: <a href="https://github.com/takumiyoshikawa/PublicProcurementData" class="uri">https://github.com/takumiyoshikawa/PublicProcurementData</a></p>
-<p>データを管理・提供している団体・個人: 東京大学政策評価研究教育センター</p>
+<p>関連分野: 交通・移住, 政治</p>
+<p>URL: <a
+href="https://github.com/takumiyoshikawa/PublicProcurementData"
+class="uri">https://github.com/takumiyoshikawa/PublicProcurementData</a></p>
+<p>データを管理・提供している団体・個人:
+東京大学政策評価研究教育センター</p>
 <p>データ利用の申請: 必要なし</p>
 <div id="データ提供元によるデータの説明-1" class="section level4">
 <h4>データ提供元によるデータの説明</h4>
 <p>国土交通省の各地方整備局が実施している公共調達に関して経済学分析に役立つデータとその収集・整理のためのコードを公開しています。</p>
+</div>
+</div>
+<div id="交通事故統計情報のオープンデータ" class="section level2">
+<h2>交通事故統計情報のオープンデータ</h2>
+<p>関連分野: 労働, 保健・健康, 交通・移住</p>
+<p>URL: <a
+href="https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+class="uri">https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html</a></p>
+<p>データを管理・提供している団体・個人: 警察庁</p>
+<p>データ利用の申請: 必要なし</p>
+<div id="データ提供元によるデータの説明-2" class="section level4">
+<h4>データ提供元によるデータの説明</h4>
+<p>「世界最先端デジタル国家創造宣言・官民データ活用推進基本計画」（令和２年７月17日閣議決定）に基づき、交通事故統計情報のオープンデータを公開しています。</p>
+</div>
+<div id="研究分析例-その-1-1" class="section level4">
+<h4>研究・分析例 その 1</h4>
+<p>朝日新聞「みえない交差点」(<a
+href="https://www.asahi.com/special/jiko-kosaten/?iref=mienaikosaten_analysis"
+class="uri">https://www.asahi.com/special/jiko-kosaten/?iref=mienaikosaten_analysis</a>)</p>
+</div>
+</div>
+<div
+id="新型コロナウイルス感染症の影響下における生活意識行動の変化に関する調査"
+class="section level2">
+<h2>新型コロナウイルス感染症の影響下における生活意識・行動の変化に関する調査</h2>
+<p>関連分野: 労働, 保健・健康, 教育・保育, 交通・移住</p>
+<p>URL: <a
+href="https://www5.cao.go.jp/keizai2/wellbeing/covid/index.html"
+class="uri">https://www5.cao.go.jp/keizai2/wellbeing/covid/index.html</a></p>
+<p>データを管理・提供している団体・個人: 内閣府</p>
+<p>データ利用の申請: 必要あり</p>
+<div id="データ提供元によるデータの説明-3" class="section level4">
+<h4>データ提供元によるデータの説明</h4>
+<p>本調査では、感染症の影響下における人々の生活意識・行動の変化を調査し、テレワーク実施率を含む働き方の変化や家族と過ごす時間などの生活の変化、地方移住への関心や生活満足度などの意識の変化を明らかにしています。</p>
+</div>
+</div>
+<div id="交通事故統計情報のオープンデータ-1" class="section level2">
+<h2>交通事故統計情報のオープンデータ</h2>
+<p>関連分野: 交通・移住, 地理情報</p>
+<p>URL: <a
+href="https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+class="uri">https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html</a></p>
+<p>データを管理・提供している団体・個人: 警察庁</p>
+<p>データ利用の申請: 必要なし</p>
+<div id="データ提供元によるデータの説明-4" class="section level4">
+<h4>データ提供元によるデータの説明</h4>
+<p>「世界最先端デジタル国家創造宣言・官民データ活用推進基本計画」（令和２年７月17日閣議決定）に基づき、交通事故統計情報のオープンデータを公開しています。</p>
+</div>
+<div id="研究分析例-その-1-2" class="section level4">
+<h4>研究・分析例 その 1</h4>
+<p>「みえない交差点」（朝日新聞）（<a
+href="https://www.asahi.com/special/jiko-kosaten/"
+class="uri">https://www.asahi.com/special/jiko-kosaten/</a>）</p>
 </div>
 </div>
 
@@ -391,7 +424,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -409,7 +442,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

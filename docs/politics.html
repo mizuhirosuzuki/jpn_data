@@ -14,12 +14,22 @@
 
 <title>政治</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -31,14 +41,9 @@
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -51,32 +56,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -86,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -106,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -167,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -179,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -189,11 +142,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -205,13 +175,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -219,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -272,20 +234,20 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">日本のデータ</a>
+      <a class="navbar-brand" href="index.html"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">ホーム</a>
+  <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     データ
      
     <span class="caret"></span>
@@ -295,13 +257,13 @@ $(document).ready(function () {
       <a href="labor.html">労働</a>
     </li>
     <li>
-      <a href="health.html">保健・健康</a>
+      <a href="health.html">保険・健康</a>
     </li>
     <li>
       <a href="agriculture.html">農業</a>
     </li>
     <li>
-      <a href="education.html">教育・保育</a>
+      <a href="education.html">教育・保険</a>
     </li>
     <li>
       <a href="transportation.html">交通・移住</a>
@@ -329,9 +291,6 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
-<li>
-  <a href="https://github.com/mizuhirosuzuki/jpn_data">GitHub</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -340,29 +299,79 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
 <h1 class="title toc-ignore">政治</h1>
+<h4 class="author"></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#公共調達のデータセット">公共調達のデータセット</a></li>
+<li><a
+href="#%E5%85%AC%E5%85%B1%E8%AA%BF%E9%81%94%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88"
+id="toc-公共調達のデータセット">公共調達のデータセット</a></li>
+<li><a href="#japanese-fake-news-dataset"
+id="toc-japanese-fake-news-dataset">Japanese Fake News Dataset</a></li>
+<li><a
+href="#%E5%9B%BD%E5%AE%B6%E5%85%AC%E5%8B%99%E5%93%A1%E6%B3%95%E7%AC%AC106%E6%9D%A1%E3%81%AE25%E7%AC%AC1%E9%A0%85%E7%AD%89%E3%81%AE%E8%A6%8F%E5%AE%9A%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E5%9B%BD%E5%AE%B6%E5%85%AC%E5%8B%99%E5%93%A1%E3%81%AE%E5%86%8D%E5%B0%B1%E8%81%B7%E7%8A%B6%E6%B3%81%E3%81%AE%E5%A0%B1%E5%91%8A"
+id="toc-国家公務員法第106条の25第1項等の規定に基づく国家公務員の再就職状況の報告">国家公務員法第106条の25第1項等の規定に基づく国家公務員の再就職状況の報告</a></li>
 </ul>
 </div>
 
 <div id="公共調達のデータセット" class="section level2">
 <h2>公共調達のデータセット</h2>
-<p>関連分野: <a href="transportation.html">交通・移住</a>, <a href="politics.html">政治</a></p>
-<p>URL: <a href="https://github.com/takumiyoshikawa/PublicProcurementData" class="uri">https://github.com/takumiyoshikawa/PublicProcurementData</a></p>
-<p>データを管理・提供している団体・個人: 東京大学政策評価研究教育センター</p>
+<p>関連分野: 交通・移住, 政治</p>
+<p>URL: <a
+href="https://github.com/takumiyoshikawa/PublicProcurementData"
+class="uri">https://github.com/takumiyoshikawa/PublicProcurementData</a></p>
+<p>データを管理・提供している団体・個人:
+東京大学政策評価研究教育センター</p>
 <p>データ利用の申請: 必要なし</p>
 <div id="データ提供元によるデータの説明" class="section level4">
 <h4>データ提供元によるデータの説明</h4>
 <p>国土交通省の各地方整備局が実施している公共調達に関して経済学分析に役立つデータとその収集・整理のためのコードを公開しています。</p>
+</div>
+</div>
+<div id="japanese-fake-news-dataset" class="section level2">
+<h2>Japanese Fake News Dataset</h2>
+<p>関連分野: 政治, 自然言語</p>
+<p>URL: <a href="https://hkefka385.github.io/dataset/fakenews-japanese/"
+class="uri">https://hkefka385.github.io/dataset/fakenews-japanese/</a></p>
+<p>データを管理・提供している団体・個人: Taichi Murayama</p>
+<p>データ利用の申請: 必要なし</p>
+<div id="データ提供元によるデータの説明-1" class="section level4">
+<h4>データ提供元によるデータの説明</h4>
+<p>We built a novel annotation scheme with fine-grained labeling to
+capture the various aspects of fake news, which is built based on the
+detailed investigations of existing fake news datasets. We then
+construct the first Japanese fake news dataset according to the
+annotation scheme. Our dataset can be expected to bring us in-depth
+understanding of fake news.</p>
+</div>
+<div id="研究分析例-その-1" class="section level4">
+<h4>研究・分析例 その 1</h4>
+<p>Murayama, T., Hisada, S., Uehara, M., Wakamiya, S., &amp; Aramaki, E.
+(2022). Annotation-Scheme Reconstruction for” Fake News” and Japanese
+Fake News Dataset. arXiv preprint arXiv:2204.02718.</p>
+</div>
+</div>
+<div
+id="国家公務員法第106条の25第1項等の規定に基づく国家公務員の再就職状況の報告"
+class="section level2">
+<h2>国家公務員法第106条の25第1項等の規定に基づく国家公務員の再就職状況の報告</h2>
+<p>関連分野: <a href="politics.html">政治</a></p>
+<p>URL: <a
+href="https://www.cas.go.jp/jp/gaiyou/jimu/jinjikyoku/jinji_j.html"
+class="uri">https://www.cas.go.jp/jp/gaiyou/jimu/jinjikyoku/jinji_j.html</a></p>
+<p>データを管理・提供している団体・個人: 内閣官房</p>
+<p>データ利用の申請: 必要なし</p>
+<div id="研究分析例-その-1-1" class="section level4">
+<h4>研究・分析例 その 1</h4>
+<p>天下りログ（<a href="https://amakudari-log.site/"
+class="uri">https://amakudari-log.site/</a>）</p>
 </div>
 </div>
 
@@ -375,7 +384,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -393,7 +402,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
